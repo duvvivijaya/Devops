@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diet Plan based on BMI Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.0.3/js/tableexport.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Add CSS styles for centering the input section */
+      .input-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* Remove align-items property to prevent vertical centering */
+      }
+    
+      .input-section {
+        text-align: center;
+      }
+    </style>
+    
+    
+    
+    
+    
+    
+  </head>
+  <body>
+    <div class="input-container">
+      <div class="input-section">
+      <h1>BMI Calculator, Health Condition, and Diet Plan</h1> <br>
+      <label for="age">Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" />
+
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="Enter your weight" />
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter your height" />
+<br><br><br>
+      <button id="calculate-btn">Calculate BMI</button>
+    
+      <div class="output-section">
+        <h2>Your BMI: <span id="bmi-result"></span></h2>
+        <h2>Your Health Condition: <span id="health-condition"></span></h2>
+        <h2>Your Diet Plan:</h2>
+        
+      </div>
+    </div>
+    </div>
+    <h1 id="vegetarian-heading" style="display: none;">Vegetarian people</h1>
+      
+
+    <table id="dietplan-veg" border="1" style="display: none;">
+      <tr>
+        <th>DAY</th>
+        <th>BREAKFAST</th>
+        <th>MID-MORNING</th>
+        <th>LUNCH</th>
+        <th>EVENGING SNACK</th>
+        <th>DINNER</th>
+      </tr>
+      <tr>
+        <td>Monday</td>
+        <td>Idli (steamed rice cakes) with sambar</td>
+        <td>Sliced papaya</td>
+        <td>Vegetable biryani with raita</td>
+        <td>Mixed nuts (almonds, cashews, pistachios)</td>
+        <td>Curd rice with a side of pickle</td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td>Dosa (rice crepes) with coconut chutney</td>
+        <td>Sliced cucumber with carrot</td>
+        <td>Tomato rice with curd</td>
+        <td>yogurt with honey</td>
+        <td>Pongal (rice and lentil dish) with coconut chutney</td>
+      </tr>
+
+      <tr>
+        <td>Wednesday</td>
+        <td>Upma (semolina dish) with vegetables</td>
+        <td>Mixed fruit salad</td>
+        <td>Sambar (lentil soup) with steamed rice</td>
+        <td>Banana and peanut butter</td>
+        <td>Vegetable pulao with raita</td>
+      </tr>
+
+      <tr>
+        <td>Thursday</td>
+        <td>Adai (mixed lentil dosa) with tomato chutney</td>
+        <td>Sliced apple</td>
+        <td>spiced rice and lentil dish</td>
+        <td>Greek yogurt with mixed berries</td>
+        <td>Lemon rice with a side of curd (yogurt)</td>
+      </tr>
+
+      <tr>
+        <td>Friday</td>
+        <td>Rava kesari (semolina dessert)</td>
+        <td>fruit juice</td>
+        <td>Avial (mixed vegetable curry) with steamed rice</td>
+        <td>Mixed nuts (almonds, cashews)</td>
+        <td>Tomato rasam with rice and potato fry</td>
+      </tr>
+
+      <tr>
+        <td>Saturday</td>
+        <td>Appam with vegetable stew</td>
+        <td>Mixed fruit salad</td>
+        <td>Spinach and lentil soup (Dal Palak) with steamed rice</td>
+        <td>Banana and peanut butter</td>
+        <td>Chickpea curry (Chana Masala) with roti</td>
+      </tr>
+
+      <tr>
+        <td>Sunday</td>
+        <td>Vegetable sandwich with whole-grain bread</td>
+        <td>Sliced mango</td>
+        <td>Mixed lentil soup (Rasam) with steamed rice with paneer curry</td>
+        <td>Greek yogurt with honey</td>
+        <td>Vegetable biryani with raita</td>
+      </tr>
+    </table>
+
+    <h1 id="non-vegetarian-heading" style="display: none;">Non-vegetarian people</h1>
+    <table id="dietplan-nonveg" border="1" style="display: none;">
+      <tr>
+        <th>DAY</th>
+        <th>BREAKFAST</th>
+        <th>MID-MORNING</th>
+        <th>LUNCH</th>
+        <th>EVENGING SNACK</th>
+        <th>DINNER</th>
+      </tr>
+      <tr>
+        <td>Monday</td>
+        <td>Scrambled eggs with spinach and tomatoes</td>
+        <td>Greek yogurt with mixed berries</td>
+        <td>Chicken curry with brown rice</td>
+        <td>Mixed nuts (almonds, cashews, pistachios)</td>
+        <td>Grilled fish</td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td>Omelette Dosa (rice crepes) with coconut chutney</td>
+        <td>Sliced cucumber with carrot</td>
+        <td>Mutton or seafood biryani with raita</td>
+        <td>apple</td>
+        <td>Grilled chicken or fish</td>
+      </tr>
+
+      <tr>
+        <td>Wednesday</td>
+        <td>Upma (semolina dish) with vegetables</td>
+        <td>Mixed fruit salad</td>
+        <td>
+          seafood curry with roti or paratha.A side of mixed vegetable curry
+        </td>
+        <td>Banana and peanut butter</td>
+        <td>Vegetable pulao with raita</td>
+      </tr>
+
+      <tr>
+        <td>Thursday</td>
+        <td>Egg curry with roti or paratha</td>
+        <td>Sliced apple</td>
+        <td>Chicken or mutton stew with appam</td>
+        <td>Greek yogurt with mixed berries</td>
+        <td>Vegetable rice with a side of curd (yogurt)</td>
+      </tr>
+
+      <tr>
+        <td>Friday</td>
+        <td>Rava dosa</td>
+        <td>fruit juice</td>
+        <td>Chicken or fish curry with steamed rice</td>
+        <td>Mixed nuts (almonds, cashews)</td>
+        <td>Tomato rasam with rice and potato fry</td>
+      </tr>
+
+      <tr>
+        <td>Saturday</td>
+        <td>Appam with vegetable stew</td>
+        <td>Mixed fruit salad</td>
+        <td>Spinach and lentil soup (Dal Palak) with steamed rice</td>
+        <td>Banana and peanut butter</td>
+        <td>Chickpea curry (Chana Masala) with roti</td>
+      </tr>
+
+      <tr>
+        <td>Sunday</td>
+        <td>Vegetable sandwich with whole-grain bread</td>
+        <td>Sliced mango</td>
+        <td>Mutton or seafood biryani with raita</td>
+        <td>Greek yogurt with honey</td>
+        <td>Grilled chicken or fishwith rice/td></td>
+      </tr>
+    </table>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const calculateBtn = document.getElementById("calculate-btn");
+      const ageInput = document.getElementById("age");
+      const weightInput = document.getElementById("weight");
+      const heightInput = document.getElementById("height");
+      const bmiResult = document.getElementById("bmi-result");
+      const healthCondition = document.getElementById("health-condition");
+      const dietPlanTableVeg = document.getElementById("dietplan-veg");
+      const dietPlanTableNonVeg = document.getElementById("dietplan-nonveg");
+      const vegetarianHeading = document.getElementById("vegetarian-heading");
+      const nonVegetarianHeading = document.getElementById("non-vegetarian-heading");
+
+      calculateBtn.addEventListener("click", function () {
+        const age = parseInt(ageInput.value);
+        const weight = parseFloat(weightInput.value);
+        const height = parseFloat(heightInput.value) / 100; // Convert height to meters
+        const bmi = weight / (height * height);
+        bmiResult.textContent = bmi;
+
+        // Determine health condition based on BMI
+        let condition = "";
+        if (bmi < 18.5) {
+          condition = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+          condition = "Normal Weight";
+        } else if (bmi >= 25 && bmi < 29.9) {
+          condition = "Overweight";
+        } else {
+          condition = "Obese";
+        }
+        healthCondition.textContent = condition;
+
+        // Display the diet plan tables and headings based on the condition
+        if (condition === "Normal Weight" || condition === "Overweight" || condition === "Obese") {
+          dietPlanTableVeg.style.display = "table"; // Show the vegetarian diet plan table
+          dietPlanTableNonVeg.style.display = "table"; // Hide the non-vegetarian diet plan table
+          vegetarianHeading.style.display = "block"; // Show the vegetarian heading
+          nonVegetarianHeading.style.display = "block"; // Hide the non-vegetarian heading
+        } else {
+          dietPlanTableVeg.style.display = "table"; // Hide the vegetarian diet plan table
+          dietPlanTableNonVeg.style.display = "table"; // Show the non-vegetarian diet plan table
+          vegetarianHeading.style.display = "block"; // Hide the vegetarian heading
+          nonVegetarianHeading.style.display = "block"; // Show the non-vegetarian heading
+        }
+      });
+    });
+  </script>
+</body>
+</html>
